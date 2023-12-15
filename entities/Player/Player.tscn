@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://bixl2bghc80tt"]
+
+[ext_resource type="Script" path="res://entities/Player/Player.gd" id="1_s7lkf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ut4ij"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_nk36c"]
+length = 0.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_hb8ba"]
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_s7lkf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.005, 0)
+shape = SubResource("CapsuleShape3D_ut4ij")
+
+[node name="StepUpSeparationRay_F" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, -0.553155)
+shape = SubResource("SeparationRayShape3D_nk36c")
+
+[node name="RayCast3D" type="RayCast3D" parent="StepUpSeparationRay_F"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+enabled = false
+target_position = Vector3(0, -0.55, 0)
+
+[node name="StepUpSeparationRay_L" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, -0.553155)
+shape = SubResource("SeparationRayShape3D_nk36c")
+
+[node name="RayCast3D" type="RayCast3D" parent="StepUpSeparationRay_L"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+enabled = false
+target_position = Vector3(0, -0.55, 0)
+
+[node name="StepUpSeparationRay_R" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, -0.553155)
+shape = SubResource("SeparationRayShape3D_nk36c")
+
+[node name="RayCast3D" type="RayCast3D" parent="StepUpSeparationRay_R"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+enabled = false
+target_position = Vector3(0, -0.55, 0)
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71238, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+unique_name_in_owner = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 197.0
+offset_bottom = 84.0
+text = "is_on_floor: "
+label_settings = SubResource("LabelSettings_hb8ba")
+
+[node name="StairsBelowRayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.5, 0)
