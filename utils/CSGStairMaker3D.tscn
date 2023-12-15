@@ -9,22 +9,6 @@ extends CSGBox3D
 var _cur_num_stairs = -1
 var _cur_size : Vector3
 
-func add_fresh_stairs_csg_poly():
-	if has_node('./StairsSubtractCSG'):
-		var mesh = $StairsSubtractCSG
-		remove_child(mesh)
-		mesh.queue_free()
-		#print(\"removed old stairs\")
-
-	#print(\"adding stairs\")
-	var poly = CSGPolygon3D.new()
-	poly.name = 'StairsSubtractCSG'
-	add_child(poly)
-	#poly.owner = get_tree().edited_scene_root
-
-	poly.operation = CSGShape3D.OPERATION_SUBTRACTION
-	return poly
-
 func make_stairs():
 	#if not Engine.is_editor_hint():
 		#return
