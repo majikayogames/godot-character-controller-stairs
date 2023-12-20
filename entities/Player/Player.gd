@@ -24,13 +24,6 @@ var camera_offset = Vector3(0,0,0)
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-func got_data(data):
-	position = data[0]
-	rotation = data[1]
-	last_rot = rotation
-	
-var last_rot = Vector3(0,0,0)
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and is_multiplayer_authority():
