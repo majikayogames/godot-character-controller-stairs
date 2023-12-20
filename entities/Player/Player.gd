@@ -20,7 +20,6 @@ var gravity = 9.8
 
 var camera_offset = Vector3(0,0,0)
 
-@export var coyote_time_frames_grace = 5
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
